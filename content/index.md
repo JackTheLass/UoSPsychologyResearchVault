@@ -1,6 +1,5 @@
 ---
 share: true
-title: Welcome
 ---
 # Welcome!
 Here is a current list Research Interests:
