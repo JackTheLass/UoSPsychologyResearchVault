@@ -1,6 +1,7 @@
 ---
-
+share: true
 ---
+
 # Welcome!
 Here is a current list of content
 ```dataview
