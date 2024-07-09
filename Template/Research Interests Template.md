@@ -1,19 +1,19 @@
----
-
----
 <%*
-await tp.file.move("/content/Research Interests/" + tp.file.title);
 let title = tp.file.title;
-let firstname = "";
-let secondname = "";
 let name = "";
 if (title.startsWith("Untitled")) {
-firstname = await tp.system.prompt("First Name:");
-secondname = await tp.system.prompt("Surname Name:");
-name = firstname + "-" + secondname;
-await tp.file.rename(tp.file.creation_date("DD-MM-YYYY HH") + "h" + tp.file.creation_date("mm") + " - " + firstname + " " + secondname);
+name = await tp.system.suggester(["David Martin", "Phoebe Usher", "Rebecca Owens"], ["David Martin", "Phoebe Usher", "Rebecca Owens"], true, "Name: ");
+filetitle = tp.file.creation_date("DD-MM-YYYY HH") + "h" + tp.file.creation_date("mm")
+filename = "/content/Research Interests/" + name + "/" + filetitle
+await tp.file.move(filename);
+await tp.file.rename(filetitle);
 }
-%>
- #research-interest #<% name.toLowerCase() %> Remember to tag other interests here too e.g. developmental, forensic, autism etc. (use # and then type any tag you want without a space after the #)
-
-Leave a little note here about what interests you!
+-%>
+<% "---" %>
+Date: <% tp.file.creation_date("DD-MM-YYYY") %>
+Time: <% tp.file.creation_date("HH:mm") %>
+Author: <% name %>
+Tags: research-interests, <% name.replace(/ /g, '-') %>, 
+<% "---" %>
+Add any other tags that are relevant e.g. developmental, forensic, autism etc. (use # and then type any tag you want without a space after the #)
+# Research Interest
